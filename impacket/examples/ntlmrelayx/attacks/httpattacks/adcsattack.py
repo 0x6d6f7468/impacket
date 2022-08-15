@@ -28,13 +28,15 @@ class ADCSAttack:
     def _run(self):
 
         if self.config.isADCSDump:
-            LOG.info('----- Dumping certificates: -----')
+            LOG.info('----- Dumping user certificate templates: -----')
             self.client.request("GET", "/certsrv/certrqxt.asp")
             request = self.client.getresponse()
             data = request.read()
             certs = re.findall(r';;;;;[\w\s]+">(.*?)</Option>', data.decode())
             #certs = re.findall(r'<Option Value="[\.\?\w\s;-]+">(.*?)</Option>', data.decode())
+            print()
             print(*certs, sep="\n")
+            print()
             return
 
         key = crypto.PKey()
