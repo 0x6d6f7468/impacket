@@ -97,6 +97,7 @@ class NTLMRelayxConfig:
 
         # AD CS attack options
         self.isADCSAttack = False
+        self.isADCSDump = False
         self.template = None
         self.altName = None
 
@@ -230,6 +231,9 @@ class NTLMRelayxConfig:
 
     def setIsADCSAttack(self, isADCSAttack):
         self.isADCSAttack = isADCSAttack
+
+    def setIsADCSDump(self, isADCSDump):
+        self.isADCSDump = isADCSDump
 
     def setIsShadowCredentialsAttack(self, IsShadowCredentialsAttack):
         self.IsShadowCredentialsAttack = IsShadowCredentialsAttack

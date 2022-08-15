@@ -26,6 +26,17 @@ ELEVATED = []
 class ADCSAttack:
 
     def _run(self):
+
+        if self.config.isADCSDump:
+            LOG.info('----- Dumping certificates: -----')
+            self.client.request("GET", "/certsrv/certrqxt.asp")
+            request = self.client.getresponse()
+            data = request.read()
+            certs = re.findall(r';;;;;[\w\s]+">(.*?)</Option>', a)
+            #certs = re.findall(r'<Option Value="[\.\?\w\s;-]+">(.*?)</Option>', a)
+            LOG.info('\n'.join(certs))
+            return
+
         key = crypto.PKey()
         key.generate_key(crypto.TYPE_RSA, 4096)
 
