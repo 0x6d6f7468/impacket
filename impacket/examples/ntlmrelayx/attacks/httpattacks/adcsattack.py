@@ -34,7 +34,7 @@ class ADCSAttack:
             data = request.read()
             certs = re.findall(r';;;;;[\w\s]+">(.*?)</Option>', data.decode())
             #certs = re.findall(r'<Option Value="[\.\?\w\s;-]+">(.*?)</Option>', data.decode())
-            LOG.info('\n[*]'.join(certs))
+            print(*certs, sep="\n")
             return
 
         key = crypto.PKey()
